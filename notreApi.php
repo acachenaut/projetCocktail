@@ -4,7 +4,7 @@
   if (isset ($_GET['alcool'])){
     do{
 
-    $urlCocktail = "http://iparla.iutbayonne.univ-pau.fr/~acachenaut/WebService/projetCocktail/cocktailRandom.php?alcool=".$_GET['alcool'];
+    $urlCocktail = "http://164.132.52.230/cocktailRandom.php?alcool=".$_GET['alcool'];
 
 	  $curl = curl_init();
 
