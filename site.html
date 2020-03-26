@@ -41,33 +41,65 @@
           })
           .then(data => {
             console.log(data);
-            document.getElementById("nomCocktail").innerHTML = "Voici un cocktail : " + data['nom'];
+            document.getElementById("nomCocktail").innerHTML = "<strong>Voici un cocktail : </strong>" + data['nom'];
             img.src = data['imageUrl'];
             img.width=150;
             img.heigth=150;
             block.appendChild(img);
-            document.getElementById("recette").innerHTML = "Voici la recette : " + data['recette'];
-            document.getElementById("ingredients").innerHTML = "Voici les ingrédients nécessaires : " + data['ingredients'];
+            document.getElementById("recette").innerHTML = "<strong>Voici la recette : </strong>" + data['recette'];
+            document.getElementById("ingredients").innerHTML = "<strong>Voici les ingrédients nécessaires : </strong>" + data['ingredients'];
             })
 
       }
 
     </script>
   </head>
+  <style>
+  body {
+	background-color: #F8E0E0;
+	}
+  </style>
   <body>
-    <h1>Confinement ? Ennui ?</h1>
-    <h2>C'est le moment d'essayer l'un de nos cocktails</h2>
-    Veuillez sélectionner un alcool :
-    <input type=radio id=choix1 name=choix value=Vodka 1> Vodka
-    <input type=radio id=choix2 name=choix value=Rhum 2> Rhum
-    <input type=radio id=choix3 name=choix value=Beer 3 > Bière
-    <input type=radio id=choix4 name=choix value=Gin 3 > Gin
-    <button type="button" name="button" onclick="goCocktail()">Chercher !</button><br>
-    <p id="nomCocktail"></p>
-    <div id="image"></div>
-    <p id="recette"></p>
-    <p id="ingredients"></p>
+  <div class="container-fluid">
+  <div class="lead">
+	<div class="row">
+		<div class="col-md-12">
+		<br><br><br>
+			<h1 class="text-center">
+				Confinement ? Une p'tite soif ? 
+			</h1>
+			<h2 class="text-center">
+				C'est le moment d'essayer l'un de nos cocktails alcoolisés 
+			</h2>
+			<br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
 
+			<p class="text-center">
+				<strong>Veuillez sélectionner un alcool : </strong>
+				<input type=radio id=choix1 name=choix value=Vodka 1> Vodka
+				<input type=radio id=choix2 name=choix value=Rhum 2> Rhum
+				<input type=radio id=choix3 name=choix value=Beer 3 > Bière
+				<input type=radio id=choix4 name=choix value=Gin 4 > Gin
+				<button type="button"  name="button" class="btn btn-danger btn-md" onclick="goCocktail()">
+					Chercher !
+				</button>
+			</p>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="text-center" id="nomCocktail"></p>
+			<div class="text-center" id="image"></div> <br>
+			<p class="text-center" id="recette"></p>
+			<p class="text-center" id="ingredients"></p>
+		</div>
+	</div>
+</div>
+</div>
 
 
     <!-- Optional JavaScript -->
