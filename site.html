@@ -32,7 +32,7 @@
           alcool="Gin";
         }
 
-        requette="http://iparla.iutbayonne.univ-pau.fr/~acachenaut/WebService/projetCocktail/cocktailRandom.php?alcool="+alcool;
+        requette="./notreApi.php?alcool="+alcool;
         console.log(requette);
         fetch(requette)
           .then(response => {
@@ -41,49 +41,14 @@
           })
           .then(data => {
             console.log(data);
-            document.getElementById("nomCocktail").innerHTML = "Voici un cocktail : " + data['strDrink'];
-            img.src = data['strDrinkThumb'];
+            document.getElementById("nomCocktail").innerHTML = "Voici un cocktail : " + data['nom'];
+            img.src = data['imageUrl'];
             img.width=150;
             img.heigth=150;
             block.appendChild(img);
-
-            //Requette de traduction de la recette
-            requetteTraduction="https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200325T134219Z.58726c5658221c9c.66519b955b3e3d2988042005cb584d29db19cd30&text="+data['strInstructions']+"&lang=en-fr&format=plain";
-          fetch(requetteTraduction)
-            .then(response => {
-              return response.json()
+            document.getElementById("recette").innerHTML = "Voici la recette : " + data['recette'];
+            document.getElementById("ingredients").innerHTML = "Voici les ingrédients nécessaires : " + data['ingredients'];
             })
-            .then(data => {
-            	console.log(data);
-              document.getElementById("recette").innerHTML = "Le nombre obtenu : " + data['text'];
-            })
-
-            for (var i = 1; i<15;i++){
-              if (data['strIngredient'+i]==null){
-                break;
-              }
-              else{
-                if (data['strIngredient'+(i+1)]==null){
-                ingredients+=data['strIngredient'+i];
-                }
-                else{
-                  ingredients+=data['strIngredient'+i]+",";
-                }
-              }
-            }
-
-            requetteTraduction="https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200325T134219Z.58726c5658221c9c.66519b955b3e3d2988042005cb584d29db19cd30&text="+ingredients+"&lang=en-fr&format=plain";
-          fetch(requetteTraduction)
-            .then(response => {
-              return response.json()
-            })
-            .then(data => {
-            	console.log(data);
-              document.getElementById("ingredients").innerHTML = "Voici les ingrédients nécessaires : " + data['text'];
-            })
-
-
-          })
 
       }
 
